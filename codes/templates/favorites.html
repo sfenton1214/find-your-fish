@@ -1,0 +1,23 @@
+<!--a list of fish that the user has added to favorites with links to their fish.html pages-->
+{% extends "layout.html" %}
+
+{% block main %}
+    <h2>Your Favorite Fish</h2>
+
+    <form action="/favorites" method="post">
+        <!--If the user has yet to select any favorites generate a different page-->
+        {% if rows %}
+        <div class="form-group">
+            <!--for loop to display all of the user's favorited fish as radio buttons to select-->
+            {% for r in rows %}
+            <input name="fishname" type="radio" value="{{ r["fishname"] }}" required> {{ r["fishname"] }}<br>
+            {% endfor %}
+        </div>
+        <button class="btn btn-primary" type="submit">Go to Fish</button>
+        {% else %}
+            <p>You haven't selected any fish as your favorites yet!</p>
+            <p>Try going back to the dichotomous key and finding some you like first.</p>
+        {% endif %}
+    </form>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <h2> You have found your fish! The search is over! </h2>
+    <!--make a random positive adjective come up whenever the page loads-->
+    <p> Your fish is the
+    <script>
+        var compliment = ['wonderful', 'sublime', 'enchanting', 'ineffable', 'extraordinary', 'radical'];
+        // This code for random compliment selection is cited to a conversation on Stackoverflow
+        document.write(compliment[Math.floor(Math.random() * compliment.length)]);
+    </script> {{ fish }}</p>
+
+    <div class="card">
+      Do you want to see what your fish looks like?
+      <br>
+      <a href="https://www.google.com/search?tbm=isch&q={{ fish }}">Find out</a>
+    </div>
+    <div class="card">
+      <!--Check that the user is logged in-->
+      {% if verify >= 0 %}
+        <!--So long as the user hasn't already favorited the fish, give them the option to do so-->
+        {% if verify == 0 %}
+            <p>I love this fish!</p>
+            <br>
+            <form action="/fishinsert" method="post">
+              <input type="hidden" name="fishname" value="{{ fish }}">
+              <button type="submit" class="btn btn-primary">Add to favorites</button>
+            </form>
+        {% else %}
+            <p>This is one of your favorite fish!</p>
+        {% endif %}
+      <!--If the user isn't logged in, tell them that if they were they could favorite the fish-->
+      {% else %}
+          <p>If you were a logged in/registered user you could favorite this fish</p>
+      {% endif %}
+    </div>
+    <div class="card">
+      Take a look at what the Encyclopedia of Life has to say about your fish!
+      <br>
+      <a href="https://eol.org/search_results?utf8=%E2%9C%93&q={{ fish }}">Find out</a>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <footer>
+        <a href="/">This is <i>not</i> my fish...let's try again</a>
+    </footer>
+
+{% endblock %}

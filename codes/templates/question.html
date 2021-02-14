@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h2>A Dichotomous Key of Freshwater Fishes of New England</h2>
+
+        <!--display the text of the question or fish-->
+        <p>{{ row["text"] }}</p>
+
+    <!--A and B buttons linked to a and b columns in csv-->
+    <form action="/" method="post">
+        <div class="form-group">
+            <input name="id" type="radio" value="{{ row["a"] }}" required> A
+            <input name="id" type="radio" value="{{ row["b"] }}" required> B
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+{% endblock %}
