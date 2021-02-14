@@ -1,3 +1,6 @@
+## Find Your Fish
+### A CS50 Project by Skye Fenton and Dexter Summers, Fall 2018
+
 The primary purpose of the available code is to make a website that functions as an interactive dichotomous key
 for the freshwater fishes of Massachussets. That is, if you have a fish that you caught in the Charles, you could
 pull up our website and through a series of questions discover what fish you had on your hands. This dichotomous key
